@@ -1,5 +1,7 @@
 package com.study.javaclass.polymorphism;
 
+import com.study.javaclass.Car;
+import com.study.javaclass.SedanCar;
 import com.study.javaclass.interfaceDemo.DemoJava8Impl;
 
 public class ClientTest {
