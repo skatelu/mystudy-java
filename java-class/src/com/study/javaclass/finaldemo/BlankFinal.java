@@ -1,7 +1,7 @@
 package com.study.javaclass.finaldemo;
 
 /**
- * final 数据
+ * 空 final
  */
 class Poppet{
     private int i;
@@ -14,10 +14,10 @@ public class BlankFinal {
     private final Poppet p;// Blank final reference
 
     // Blank finals MUST be initialized in the constructor
-    public BlankFinal() {
-        j = i;
-        p = new Poppet(1);
-    }
+//    public BlankFinal() {
+//        j = i;
+//        p = new Poppet(1);
+//    }
 
     public BlankFinal(int x) {
         j = x;
@@ -25,7 +25,7 @@ public class BlankFinal {
     }
 
     public static void main(String[] args) {
-        new BlankFinal();
+//        new BlankFinal();
         new BlankFinal(47);
     }
 }

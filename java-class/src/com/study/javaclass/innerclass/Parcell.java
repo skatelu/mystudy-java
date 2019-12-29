@@ -7,11 +7,10 @@ import sun.security.krb5.internal.crypto.Des;
  */
 public class Parcell {
 
-	class Contents{
-		private int i = 11;
-		public int value(){
-			return i;
-		}
+	private static int c = 3;
+
+	class Contents {
+
 	}
 
 	class Destination{

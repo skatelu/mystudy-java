@@ -18,11 +18,17 @@ public class FinalArguments {
     }
 
 //    void f(final int i){i++;}// Can't change You can only read from a final primitive
-    int g(final int i){return i + 1;}
+    void g(final int i){
+        System.out.println(i);
+        d(i);
+    }
+
+    void d(int c){
+        System.out.println(c++);
+    }
 
     public static void main(String[] args) {
-        FinalArguments bf = new FinalArguments();
-        bf.without(null);
-        bf.with(null);
+        FinalArguments f = new FinalArguments();
+        f.g(3);
     }
 }
