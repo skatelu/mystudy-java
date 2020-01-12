@@ -14,14 +14,14 @@ target/
 /log
 /_session
 /log_sophon
-/.idea
+.idea
 /log-tomcat
 logs-sophon-dispach-api/
 log_sophon/
 logs/
 log-tomcat/
 _session/
-/.idea/
+.idea/
 out
 test-output
 .gradletasknamecache
