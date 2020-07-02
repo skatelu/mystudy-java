@@ -1,0 +1,21 @@
+{
+  "总条数": 30,
+  "详细数据": [
+    {
+      "applyReason": "因案件需求",
+      "applyStatus": 2,
+      "applyTmie": 24,
+      "caseNum": "A3701053200002015071186",
+      "createtime": 1585534915241,
+      "id": 1,
+      "idcardNumber": "372328195642547821",
+      "passtime": 1585534915241,
+      "phone": "13546878456",
+      "policeNum": "100903",
+      "status": 3,
+      "subBureau": "测试公安局",
+      "updatetime": 1585534915241,
+      "userName": "测试"
+    }
+  ]
+}

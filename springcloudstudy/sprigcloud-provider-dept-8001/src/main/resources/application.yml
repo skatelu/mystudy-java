@@ -1,0 +1,19 @@
+server:
+  port: 8001
+
+# mybatis 配置
+mybatis:
+  type-aliases-package: com.yjl.springcloud.pojo
+  # mybatis 核心配置文件
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+spring:
+  application:
+    name: springcloud-provider-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf-8
+    username: root
+    password: 123456

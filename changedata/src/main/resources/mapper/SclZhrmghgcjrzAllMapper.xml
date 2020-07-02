@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.changedata.dao.SclZhrmghgcjrzAllMapper">
+  <resultMap id="BaseResultMap" type="com.example.changedata.model.SclZhrmghgcjrzAll">
+    <id column="ID" jdbcType="INTEGER" property="id" />
+    <result column="CertificateName" jdbcType="VARCHAR" property="certificatename" />
+    <result column="IssueDept" jdbcType="VARCHAR" property="issuedept" />
+    <result column="CertificateHolderType" jdbcType="VARCHAR" property="certificateholdertype" />
+    <result column="CertificateHolder" jdbcType="VARCHAR" property="certificateholder" />
+    <result column="CertificateType" jdbcType="VARCHAR" property="certificatetype" />
+    <result column="CertificateHolderCode" jdbcType="VARCHAR" property="certificateholdercode" />
+    <result column="CertificateLevel" jdbcType="VARCHAR" property="certificatelevel" />
+    <result column="Tel" jdbcType="VARCHAR" property="tel" />
+    <result column="Project" jdbcType="VARCHAR" property="project" />
+    <result column="Citizen_id" jdbcType="VARCHAR" property="citizenId" />
+    <result column="first_time" jdbcType="DATE" property="firstTime" />
+    <result column="stime" jdbcType="DATE" property="stime" />
+    <result column="etime" jdbcType="DATE" property="etime" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    ID, CertificateName, IssueDept, CertificateHolderType, CertificateHolder, CertificateType, 
+    CertificateHolderCode, CertificateLevel, Tel, Project, Citizen_id, first_time, stime, 
+    etime, CREATE_TIME
+  </sql>
+  <select id="selectByExample" parameterType="com.example.changedata.model.SclZhrmghgcjrzAllExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from scl_zhrmghgcjrz_all
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from scl_zhrmghgcjrz_all
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from scl_zhrmghgcjrz_all
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.changedata.model.SclZhrmghgcjrzAllExample">
+    delete from scl_zhrmghgcjrz_all
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.changedata.model.SclZhrmghgcjrzAll">
+    insert into scl_zhrmghgcjrz_all (ID, CertificateName, IssueDept, 
+      CertificateHolderType, CertificateHolder, 
+      CertificateType, CertificateHolderCode, 
+      CertificateLevel, Tel, Project, 
+      Citizen_id, first_time, stime, 
+      etime, CREATE_TIME)
+    values (#{id,jdbcType=INTEGER}, #{certificatename,jdbcType=VARCHAR}, #{issuedept,jdbcType=VARCHAR}, 
+      #{certificateholdertype,jdbcType=VARCHAR}, #{certificateholder,jdbcType=VARCHAR}, 
+      #{certificatetype,jdbcType=VARCHAR}, #{certificateholdercode,jdbcType=VARCHAR}, 
+      #{certificatelevel,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{project,jdbcType=VARCHAR}, 
+      #{citizenId,jdbcType=VARCHAR}, #{firstTime,jdbcType=DATE}, #{stime,jdbcType=DATE}, 
+      #{etime,jdbcType=DATE}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.changedata.model.SclZhrmghgcjrzAll">
+    insert into scl_zhrmghgcjrz_all
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        ID,
+      </if>
+      <if test="certificatename != null">
+        CertificateName,
+      </if>
+      <if test="issuedept != null">
+        IssueDept,
+      </if>
+      <if test="certificateholdertype != null">
+        CertificateHolderType,
+      </if>
+      <if test="certificateholder != null">
+        CertificateHolder,
+      </if>
+      <if test="certificatetype != null">
+        CertificateType,
+      </if>
+      <if test="certificateholdercode != null">
+        CertificateHolderCode,
+      </if>
+      <if test="certificatelevel != null">
+        CertificateLevel,
+      </if>
+      <if test="tel != null">
+        Tel,
+      </if>
+      <if test="project != null">
+        Project,
+      </if>
+      <if test="citizenId != null">
+        Citizen_id,
+      </if>
+      <if test="firstTime != null">
+        first_time,
+      </if>
+      <if test="stime != null">
+        stime,
+      </if>
+      <if test="etime != null">
+        etime,
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="certificatename != null">
+        #{certificatename,jdbcType=VARCHAR},
+      </if>
+      <if test="issuedept != null">
+        #{issuedept,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholdertype != null">
+        #{certificateholdertype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholder != null">
+        #{certificateholder,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatetype != null">
+        #{certificatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholdercode != null">
+        #{certificateholdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatelevel != null">
+        #{certificatelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="project != null">
+        #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="citizenId != null">
+        #{citizenId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTime != null">
+        #{firstTime,jdbcType=DATE},
+      </if>
+      <if test="stime != null">
+        #{stime,jdbcType=DATE},
+      </if>
+      <if test="etime != null">
+        #{etime,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.changedata.model.SclZhrmghgcjrzAllExample" resultType="java.lang.Long">
+    select count(*) from scl_zhrmghgcjrz_all
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update scl_zhrmghgcjrz_all
+    <set>
+      <if test="record.id != null">
+        ID = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.certificatename != null">
+        CertificateName = #{record.certificatename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.issuedept != null">
+        IssueDept = #{record.issuedept,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificateholdertype != null">
+        CertificateHolderType = #{record.certificateholdertype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificateholder != null">
+        CertificateHolder = #{record.certificateholder,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificatetype != null">
+        CertificateType = #{record.certificatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificateholdercode != null">
+        CertificateHolderCode = #{record.certificateholdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certificatelevel != null">
+        CertificateLevel = #{record.certificatelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null">
+        Tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.project != null">
+        Project = #{record.project,jdbcType=VARCHAR},
+      </if>
+      <if test="record.citizenId != null">
+        Citizen_id = #{record.citizenId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstTime != null">
+        first_time = #{record.firstTime,jdbcType=DATE},
+      </if>
+      <if test="record.stime != null">
+        stime = #{record.stime,jdbcType=DATE},
+      </if>
+      <if test="record.etime != null">
+        etime = #{record.etime,jdbcType=DATE},
+      </if>
+      <if test="record.createTime != null">
+        CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update scl_zhrmghgcjrz_all
+    set ID = #{record.id,jdbcType=INTEGER},
+      CertificateName = #{record.certificatename,jdbcType=VARCHAR},
+      IssueDept = #{record.issuedept,jdbcType=VARCHAR},
+      CertificateHolderType = #{record.certificateholdertype,jdbcType=VARCHAR},
+      CertificateHolder = #{record.certificateholder,jdbcType=VARCHAR},
+      CertificateType = #{record.certificatetype,jdbcType=VARCHAR},
+      CertificateHolderCode = #{record.certificateholdercode,jdbcType=VARCHAR},
+      CertificateLevel = #{record.certificatelevel,jdbcType=VARCHAR},
+      Tel = #{record.tel,jdbcType=VARCHAR},
+      Project = #{record.project,jdbcType=VARCHAR},
+      Citizen_id = #{record.citizenId,jdbcType=VARCHAR},
+      first_time = #{record.firstTime,jdbcType=DATE},
+      stime = #{record.stime,jdbcType=DATE},
+      etime = #{record.etime,jdbcType=DATE},
+      CREATE_TIME = #{record.createTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.changedata.model.SclZhrmghgcjrzAll">
+    update scl_zhrmghgcjrz_all
+    <set>
+      <if test="certificatename != null">
+        CertificateName = #{certificatename,jdbcType=VARCHAR},
+      </if>
+      <if test="issuedept != null">
+        IssueDept = #{issuedept,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholdertype != null">
+        CertificateHolderType = #{certificateholdertype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholder != null">
+        CertificateHolder = #{certificateholder,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatetype != null">
+        CertificateType = #{certificatetype,jdbcType=VARCHAR},
+      </if>
+      <if test="certificateholdercode != null">
+        CertificateHolderCode = #{certificateholdercode,jdbcType=VARCHAR},
+      </if>
+      <if test="certificatelevel != null">
+        CertificateLevel = #{certificatelevel,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        Tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="project != null">
+        Project = #{project,jdbcType=VARCHAR},
+      </if>
+      <if test="citizenId != null">
+        Citizen_id = #{citizenId,jdbcType=VARCHAR},
+      </if>
+      <if test="firstTime != null">
+        first_time = #{firstTime,jdbcType=DATE},
+      </if>
+      <if test="stime != null">
+        stime = #{stime,jdbcType=DATE},
+      </if>
+      <if test="etime != null">
+        etime = #{etime,jdbcType=DATE},
+      </if>
+      <if test="createTime != null">
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.changedata.model.SclZhrmghgcjrzAll">
+    update scl_zhrmghgcjrz_all
+    set CertificateName = #{certificatename,jdbcType=VARCHAR},
+      IssueDept = #{issuedept,jdbcType=VARCHAR},
+      CertificateHolderType = #{certificateholdertype,jdbcType=VARCHAR},
+      CertificateHolder = #{certificateholder,jdbcType=VARCHAR},
+      CertificateType = #{certificatetype,jdbcType=VARCHAR},
+      CertificateHolderCode = #{certificateholdercode,jdbcType=VARCHAR},
+      CertificateLevel = #{certificatelevel,jdbcType=VARCHAR},
+      Tel = #{tel,jdbcType=VARCHAR},
+      Project = #{project,jdbcType=VARCHAR},
+      Citizen_id = #{citizenId,jdbcType=VARCHAR},
+      first_time = #{firstTime,jdbcType=DATE},
+      stime = #{stime,jdbcType=DATE},
+      etime = #{etime,jdbcType=DATE},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

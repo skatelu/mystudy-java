@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.changedata.dao.CertEjjzszyzgzsMapper">
+  <resultMap id="BaseResultMap" type="com.example.changedata.model.CertEjjzszyzgzs">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
+    <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate" />
+    <result column="gmt_modified" jdbcType="TIMESTAMP" property="gmtModified" />
+    <result column="issuing_org_id" jdbcType="INTEGER" property="issuingOrgId" />
+    <result column="cert_number" jdbcType="VARCHAR" property="certNumber" />
+    <result column="cert_identifier" jdbcType="VARCHAR" property="certIdentifier" />
+    <result column="ownersfzhm" jdbcType="VARCHAR" property="ownersfzhm" />
+    <result column="creditcode" jdbcType="VARCHAR" property="creditcode" />
+    <result column="certno" jdbcType="VARCHAR" property="certno" />
+    <result column="faceimg" jdbcType="VARCHAR" property="faceimg" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="speciality" jdbcType="VARCHAR" property="speciality" />
+    <result column="remarks" jdbcType="VARCHAR" property="remarks" />
+    <result column="pzrq" jdbcType="DATE" property="pzrq" />
+    <result column="zzbfrq" jdbcType="DATE" property="zzbfrq" />
+    <result column="zzyxqqsrq" jdbcType="DATE" property="zzyxqqsrq" />
+    <result column="zzyxqjzrq" jdbcType="DATE" property="zzyxqjzrq" />
+    <result column="source" jdbcType="INTEGER" property="source" />
+    <result column="blank_file" jdbcType="VARCHAR" property="blankFile" />
+    <result column="sign_file" jdbcType="VARCHAR" property="signFile" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.example.changedata.model.CertEjjzszyzgzs">
+    <result column="extendinfo" jdbcType="LONGVARCHAR" property="extendinfo" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, is_deleted, gmt_create, gmt_modified, issuing_org_id, cert_number, cert_identifier, 
+    ownersfzhm, creditcode, certno, faceimg, name, sex, category, speciality, remarks, 
+    pzrq, zzbfrq, zzyxqqsrq, zzyxqjzrq, source, blank_file, sign_file, status
+  </sql>
+  <sql id="Blob_Column_List">
+    extendinfo
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.example.changedata.model.CertEjjzszyzgzsExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cert_ejjzszyzgzs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.example.changedata.model.CertEjjzszyzgzsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from cert_ejjzszyzgzs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from cert_ejjzszyzgzs
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from cert_ejjzszyzgzs
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.example.changedata.model.CertEjjzszyzgzsExample">
+    delete from cert_ejjzszyzgzs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.example.changedata.model.CertEjjzszyzgzs">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into cert_ejjzszyzgzs (is_deleted, gmt_create, gmt_modified, 
+      issuing_org_id, cert_number, cert_identifier, 
+      ownersfzhm, creditcode, certno, 
+      faceimg, name, sex, 
+      category, speciality, remarks, 
+      pzrq, zzbfrq, zzyxqqsrq, zzyxqjzrq, 
+      source, blank_file, sign_file, 
+      status, extendinfo)
+    values (#{isDeleted,jdbcType=INTEGER}, #{gmtCreate,jdbcType=TIMESTAMP}, #{gmtModified,jdbcType=TIMESTAMP}, 
+      #{issuingOrgId,jdbcType=INTEGER}, #{certNumber,jdbcType=VARCHAR}, #{certIdentifier,jdbcType=VARCHAR}, 
+      #{ownersfzhm,jdbcType=VARCHAR}, #{creditcode,jdbcType=VARCHAR}, #{certno,jdbcType=VARCHAR}, 
+      #{faceimg,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{category,jdbcType=VARCHAR}, #{speciality,jdbcType=VARCHAR}, #{remarks,jdbcType=VARCHAR}, 
+      #{pzrq,jdbcType=DATE}, #{zzbfrq,jdbcType=DATE}, #{zzyxqqsrq,jdbcType=DATE}, #{zzyxqjzrq,jdbcType=DATE}, 
+      #{source,jdbcType=INTEGER}, #{blankFile,jdbcType=VARCHAR}, #{signFile,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{extendinfo,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.changedata.model.CertEjjzszyzgzs">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into cert_ejjzszyzgzs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create,
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified,
+      </if>
+      <if test="issuingOrgId != null">
+        issuing_org_id,
+      </if>
+      <if test="certNumber != null">
+        cert_number,
+      </if>
+      <if test="certIdentifier != null">
+        cert_identifier,
+      </if>
+      <if test="ownersfzhm != null">
+        ownersfzhm,
+      </if>
+      <if test="creditcode != null">
+        creditcode,
+      </if>
+      <if test="certno != null">
+        certno,
+      </if>
+      <if test="faceimg != null">
+        faceimg,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="speciality != null">
+        speciality,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="pzrq != null">
+        pzrq,
+      </if>
+      <if test="zzbfrq != null">
+        zzbfrq,
+      </if>
+      <if test="zzyxqqsrq != null">
+        zzyxqqsrq,
+      </if>
+      <if test="zzyxqjzrq != null">
+        zzyxqjzrq,
+      </if>
+      <if test="source != null">
+        source,
+      </if>
+      <if test="blankFile != null">
+        blank_file,
+      </if>
+      <if test="signFile != null">
+        sign_file,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="extendinfo != null">
+        extendinfo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuingOrgId != null">
+        #{issuingOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="certNumber != null">
+        #{certNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certIdentifier != null">
+        #{certIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="ownersfzhm != null">
+        #{ownersfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="creditcode != null">
+        #{creditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="certno != null">
+        #{certno,jdbcType=VARCHAR},
+      </if>
+      <if test="faceimg != null">
+        #{faceimg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null">
+        #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="pzrq != null">
+        #{pzrq,jdbcType=DATE},
+      </if>
+      <if test="zzbfrq != null">
+        #{zzbfrq,jdbcType=DATE},
+      </if>
+      <if test="zzyxqqsrq != null">
+        #{zzyxqqsrq,jdbcType=DATE},
+      </if>
+      <if test="zzyxqjzrq != null">
+        #{zzyxqjzrq,jdbcType=DATE},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=INTEGER},
+      </if>
+      <if test="blankFile != null">
+        #{blankFile,jdbcType=VARCHAR},
+      </if>
+      <if test="signFile != null">
+        #{signFile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="extendinfo != null">
+        #{extendinfo,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.example.changedata.model.CertEjjzszyzgzsExample" resultType="java.lang.Long">
+    select count(*) from cert_ejjzszyzgzs
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update cert_ejjzszyzgzs
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.gmtCreate != null">
+        gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.gmtModified != null">
+        gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.issuingOrgId != null">
+        issuing_org_id = #{record.issuingOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.certNumber != null">
+        cert_number = #{record.certNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certIdentifier != null">
+        cert_identifier = #{record.certIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ownersfzhm != null">
+        ownersfzhm = #{record.ownersfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creditcode != null">
+        creditcode = #{record.creditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.certno != null">
+        certno = #{record.certno,jdbcType=VARCHAR},
+      </if>
+      <if test="record.faceimg != null">
+        faceimg = #{record.faceimg,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null">
+        sex = #{record.sex,jdbcType=VARCHAR},
+      </if>
+      <if test="record.category != null">
+        category = #{record.category,jdbcType=VARCHAR},
+      </if>
+      <if test="record.speciality != null">
+        speciality = #{record.speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="record.remarks != null">
+        remarks = #{record.remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pzrq != null">
+        pzrq = #{record.pzrq,jdbcType=DATE},
+      </if>
+      <if test="record.zzbfrq != null">
+        zzbfrq = #{record.zzbfrq,jdbcType=DATE},
+      </if>
+      <if test="record.zzyxqqsrq != null">
+        zzyxqqsrq = #{record.zzyxqqsrq,jdbcType=DATE},
+      </if>
+      <if test="record.zzyxqjzrq != null">
+        zzyxqjzrq = #{record.zzyxqjzrq,jdbcType=DATE},
+      </if>
+      <if test="record.source != null">
+        source = #{record.source,jdbcType=INTEGER},
+      </if>
+      <if test="record.blankFile != null">
+        blank_file = #{record.blankFile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.signFile != null">
+        sign_file = #{record.signFile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.extendinfo != null">
+        extendinfo = #{record.extendinfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update cert_ejjzszyzgzs
+    set id = #{record.id,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      issuing_org_id = #{record.issuingOrgId,jdbcType=INTEGER},
+      cert_number = #{record.certNumber,jdbcType=VARCHAR},
+      cert_identifier = #{record.certIdentifier,jdbcType=VARCHAR},
+      ownersfzhm = #{record.ownersfzhm,jdbcType=VARCHAR},
+      creditcode = #{record.creditcode,jdbcType=VARCHAR},
+      certno = #{record.certno,jdbcType=VARCHAR},
+      faceimg = #{record.faceimg,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR},
+      speciality = #{record.speciality,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      pzrq = #{record.pzrq,jdbcType=DATE},
+      zzbfrq = #{record.zzbfrq,jdbcType=DATE},
+      zzyxqqsrq = #{record.zzyxqqsrq,jdbcType=DATE},
+      zzyxqjzrq = #{record.zzyxqjzrq,jdbcType=DATE},
+      source = #{record.source,jdbcType=INTEGER},
+      blank_file = #{record.blankFile,jdbcType=VARCHAR},
+      sign_file = #{record.signFile,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER},
+      extendinfo = #{record.extendinfo,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update cert_ejjzszyzgzs
+    set id = #{record.id,jdbcType=INTEGER},
+      is_deleted = #{record.isDeleted,jdbcType=INTEGER},
+      gmt_create = #{record.gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{record.gmtModified,jdbcType=TIMESTAMP},
+      issuing_org_id = #{record.issuingOrgId,jdbcType=INTEGER},
+      cert_number = #{record.certNumber,jdbcType=VARCHAR},
+      cert_identifier = #{record.certIdentifier,jdbcType=VARCHAR},
+      ownersfzhm = #{record.ownersfzhm,jdbcType=VARCHAR},
+      creditcode = #{record.creditcode,jdbcType=VARCHAR},
+      certno = #{record.certno,jdbcType=VARCHAR},
+      faceimg = #{record.faceimg,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=VARCHAR},
+      category = #{record.category,jdbcType=VARCHAR},
+      speciality = #{record.speciality,jdbcType=VARCHAR},
+      remarks = #{record.remarks,jdbcType=VARCHAR},
+      pzrq = #{record.pzrq,jdbcType=DATE},
+      zzbfrq = #{record.zzbfrq,jdbcType=DATE},
+      zzyxqqsrq = #{record.zzyxqqsrq,jdbcType=DATE},
+      zzyxqjzrq = #{record.zzyxqjzrq,jdbcType=DATE},
+      source = #{record.source,jdbcType=INTEGER},
+      blank_file = #{record.blankFile,jdbcType=VARCHAR},
+      sign_file = #{record.signFile,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.changedata.model.CertEjjzszyzgzs">
+    update cert_ejjzszyzgzs
+    <set>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=INTEGER},
+      </if>
+      <if test="gmtCreate != null">
+        gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gmtModified != null">
+        gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      </if>
+      <if test="issuingOrgId != null">
+        issuing_org_id = #{issuingOrgId,jdbcType=INTEGER},
+      </if>
+      <if test="certNumber != null">
+        cert_number = #{certNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="certIdentifier != null">
+        cert_identifier = #{certIdentifier,jdbcType=VARCHAR},
+      </if>
+      <if test="ownersfzhm != null">
+        ownersfzhm = #{ownersfzhm,jdbcType=VARCHAR},
+      </if>
+      <if test="creditcode != null">
+        creditcode = #{creditcode,jdbcType=VARCHAR},
+      </if>
+      <if test="certno != null">
+        certno = #{certno,jdbcType=VARCHAR},
+      </if>
+      <if test="faceimg != null">
+        faceimg = #{faceimg,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="category != null">
+        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="speciality != null">
+        speciality = #{speciality,jdbcType=VARCHAR},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="pzrq != null">
+        pzrq = #{pzrq,jdbcType=DATE},
+      </if>
+      <if test="zzbfrq != null">
+        zzbfrq = #{zzbfrq,jdbcType=DATE},
+      </if>
+      <if test="zzyxqqsrq != null">
+        zzyxqqsrq = #{zzyxqqsrq,jdbcType=DATE},
+      </if>
+      <if test="zzyxqjzrq != null">
+        zzyxqjzrq = #{zzyxqjzrq,jdbcType=DATE},
+      </if>
+      <if test="source != null">
+        source = #{source,jdbcType=INTEGER},
+      </if>
+      <if test="blankFile != null">
+        blank_file = #{blankFile,jdbcType=VARCHAR},
+      </if>
+      <if test="signFile != null">
+        sign_file = #{signFile,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="extendinfo != null">
+        extendinfo = #{extendinfo,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.example.changedata.model.CertEjjzszyzgzs">
+    update cert_ejjzszyzgzs
+    set is_deleted = #{isDeleted,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      issuing_org_id = #{issuingOrgId,jdbcType=INTEGER},
+      cert_number = #{certNumber,jdbcType=VARCHAR},
+      cert_identifier = #{certIdentifier,jdbcType=VARCHAR},
+      ownersfzhm = #{ownersfzhm,jdbcType=VARCHAR},
+      creditcode = #{creditcode,jdbcType=VARCHAR},
+      certno = #{certno,jdbcType=VARCHAR},
+      faceimg = #{faceimg,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      speciality = #{speciality,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      pzrq = #{pzrq,jdbcType=DATE},
+      zzbfrq = #{zzbfrq,jdbcType=DATE},
+      zzyxqqsrq = #{zzyxqqsrq,jdbcType=DATE},
+      zzyxqjzrq = #{zzyxqjzrq,jdbcType=DATE},
+      source = #{source,jdbcType=INTEGER},
+      blank_file = #{blankFile,jdbcType=VARCHAR},
+      sign_file = #{signFile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      extendinfo = #{extendinfo,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.changedata.model.CertEjjzszyzgzs">
+    update cert_ejjzszyzgzs
+    set is_deleted = #{isDeleted,jdbcType=INTEGER},
+      gmt_create = #{gmtCreate,jdbcType=TIMESTAMP},
+      gmt_modified = #{gmtModified,jdbcType=TIMESTAMP},
+      issuing_org_id = #{issuingOrgId,jdbcType=INTEGER},
+      cert_number = #{certNumber,jdbcType=VARCHAR},
+      cert_identifier = #{certIdentifier,jdbcType=VARCHAR},
+      ownersfzhm = #{ownersfzhm,jdbcType=VARCHAR},
+      creditcode = #{creditcode,jdbcType=VARCHAR},
+      certno = #{certno,jdbcType=VARCHAR},
+      faceimg = #{faceimg,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      category = #{category,jdbcType=VARCHAR},
+      speciality = #{speciality,jdbcType=VARCHAR},
+      remarks = #{remarks,jdbcType=VARCHAR},
+      pzrq = #{pzrq,jdbcType=DATE},
+      zzbfrq = #{zzbfrq,jdbcType=DATE},
+      zzyxqqsrq = #{zzyxqqsrq,jdbcType=DATE},
+      zzyxqjzrq = #{zzyxqjzrq,jdbcType=DATE},
+      source = #{source,jdbcType=INTEGER},
+      blank_file = #{blankFile,jdbcType=VARCHAR},
+      sign_file = #{signFile,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

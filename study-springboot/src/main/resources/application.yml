@@ -1,0 +1,35 @@
+# 对程序进行重新命名
+spring:
+  application:
+    name: mytest
+  #  表示文件编码强制使用 utf-8
+  mandatory-file-encoding: utf-8
+  #  设置 http 请求的编码
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+  banner:
+    location: banner.txt
+    charset: UTF-8
+  main:
+    banner-mode: console
+  redis:
+    host: 192.168.204.5
+    port: 6379
+    database: 2
+#  profiles:
+#    active: dev
+#  config:
+#    additional-location:
+#  自定义配置 用Value注解进行获取
+myConfig:
+  myObject:
+    myName: 张三${random.int}
+    myAge: 29
+
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+
