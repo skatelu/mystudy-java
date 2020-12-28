@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.sun.java.swing.plaf.windows.WindowsTextAreaUI;
 import org.apache.commons.lang3.StringUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.util.StopWatch;
 
 import java.io.IOException;
 import java.security.interfaces.RSAPublicKey;
@@ -95,6 +96,11 @@ class RSAUtilTest {
     }
 
     @Test
-    void main() {
+    void stopWatchTest() throws InterruptedException {
+        StopWatch stopWatch = new StopWatch();
+        stopWatch.start("计时测试");
+        Thread.currentThread().sleep(2000);
+        stopWatch.stop();
+        System.out.println("该任务用时 = " + stopWatch.getLastTaskTimeMillis() + "ms;");
     }
 }

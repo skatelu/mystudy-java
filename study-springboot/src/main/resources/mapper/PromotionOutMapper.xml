@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testhttp.demo.sqlitetest.mapper.PromotionOutMapper">
+    <resultMap id="promotionOutDO"
+               type="testhttp.demo.sqlitetest.model.PromotionOutDO">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="promotionName" column="promotion_name" jdbcType="VARCHAR"/>
+        <result property="promotionId" column="promotion_id" jdbcType="VARCHAR"/>
+        <result property="channel" column="channel" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="VARCHAR"/>
+        <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--基本字段-->
+    <sql id="base_Column_List">
+        id,promotion_name,promotion_id,channel,status,gmt_create,gmt_modified,ext_info
+    </sql>
+
+    <!--查询此表的所有数据-->
+    <select id="listPromotionOutDO" resultMap="promotionOutDO">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_out
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testhttp.demo.sqlitetest.mapper.PromotionBaseMapper">
+    <!-- 文件版本信息实体 -->
+    <resultMap id="promotionBase"
+               type="testhttp.demo.sqlitetest.model.PromotionBaseDO">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="promotionId" column="promotion_id" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
+        <result property="promotionType" column="promotion_type" jdbcType="VARCHAR"/>
+        <result property="promotionName" column="promotion_name" jdbcType="VARCHAR"/>
+        <result property="description" column="description" jdbcType="VARCHAR"/>
+        <result property="startTime" column="start_time" jdbcType="VARCHAR"/>
+        <result property="endTime" column="end_time" jdbcType="VARCHAR"/>
+        <result property="beVoucher" column="be_voucher" jdbcType="INTEGER"/>
+        <result property="channel" column="channel" jdbcType="VARCHAR"/>
+        <result property="beOverlay" column="be_overlay" jdbcType="INTEGER"/>
+        <result property="overlayTimes" column="overlay_times" jdbcType="INTEGER"/>
+        <result property="beAutoActive" column="be_auto_active" jdbcType="INTEGER"/>
+        <result property="beVisible" column="be_visible" jdbcType="INTEGER"/>
+        <result property="availableTime" column="available_time" jdbcType="VARCHAR"/>
+        <result property="itemCoverage" column="item_coverage" jdbcType="VARCHAR"/>
+        <result property="suitablePeople" column="suitable_people" jdbcType="VARCHAR"/>
+        <result property="promotionToolCode" column="promotion_tool_code" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="outPromotionId" column="out_promotion_id" jdbcType="VARCHAR"/>
+        <result property="deleted" column="deleted" jdbcType="INTEGER"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="VARCHAR"/>
+        <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--基本字段-->
+    <sql id="base_Column_List">
+        id,promotion_id,brand_id,promotion_type,promotion_name,description,start_time,end_time,be_voucher,channel,be_overlay,overlay_times,be_auto_active,be_visible,available_time,item_coverage,suitable_people,promotion_tool_code,status,out_promotion_id,deleted,gmt_create,gmt_modified,ext_info
+    </sql>
+
+    <!--查询表中所有数据-->
+    <select id="listPromotionBaseDO" resultMap="promotionBase">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_base
+    </select>
+
+    <!--根据传入的活动Id列表查询相关数据-->
+    <select id="queryPromotionBaseDOByPromotionId" resultMap="promotionBase" parameterType="list">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_base
+        WHERE promotion_id IN
+        <foreach collection="list" item="promotionId" open="(" close=")" separator=",">
+            #{promotionId}
+        </foreach>
+    </select>
+</mapper>

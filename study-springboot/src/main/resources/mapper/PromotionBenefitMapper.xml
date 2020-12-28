@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testhttp.demo.sqlitetest.mapper.PromotionBenefitMapper">
+
+    <!-- 文件版本信息实体 -->
+    <resultMap id="promotionBenefitDO"
+               type="testhttp.demo.sqlitetest.model.PromotionBenefitDO">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="promotionId" column="promotion_id" jdbcType="VARCHAR"/>
+        <result property="promotionStatus" column="promotion_status" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
+        <result property="coverageItemId" column="coverage_item_id" jdbcType="VARCHAR"/>
+        <result property="benefitType" column="benefit_type" jdbcType="VARCHAR"/>
+        <result property="benefitValue" column="benefit_value" jdbcType="VARCHAR"/>
+        <result property="benefitCondition" column="benefit_condition" jdbcType="VARCHAR"/>
+        <result property="benefitConditionValue" column="benefit_condition_value" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="VARCHAR"/>
+        <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--基本字段-->
+    <sql id="base_Column_List">
+        id,promotion_id,promotion_status,brand_id,coverage_item_id,benefit_type,benefit_value,benefit_condition,benefit_condition_value,gmt_create,gmt_modified,ext_info
+    </sql>
+
+    <!--查询表中所有的数据-->
+    <select id="listPromotionBenefitDO" resultMap="promotionBenefitDO">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_benefit
+    </select>
+
+    <!--根据传入的活动Id列表查询相关数据-->
+    <select id="queryPromotionBenefitDOByPromotionId" resultMap="promotionBenefitDO" parameterType="list">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_benefit
+        WHERE promotion_id IN
+        <foreach collection="list" item="promotionId" open="(" close=")" separator=",">
+            #{promotionId}
+        </foreach>
+    </select>
+
+</mapper>

@@ -18,6 +18,14 @@ spring:
     host: 192.168.204.5
     port: 6379
     database: 2
+  datasource:
+    driver-class-name: org.sqlite.JDBC
+    url: jdbc:sqlite:D:\sqlite\db\1596446563201crmPromo.db
+    username: root
+    password:
+#    type: com.alibaba.druid.pool.DruidDataSource
+
+
 #  profiles:
 #    active: dev
 #  config:
@@ -33,3 +41,10 @@ server:
   tomcat:
     uri-encoding: UTF-8
 
+#mybatis的相关配置
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: testhttp.demo.sqlitetest.model
+  configuration:
+    map-underscore-to-camel-case: true

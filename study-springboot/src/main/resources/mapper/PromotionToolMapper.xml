@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testhttp.demo.sqlitetest.mapper.PromotionToolMapper">
+    <resultMap id="promotionToolDO"
+               type="testhttp.demo.sqlitetest.model.PromotionToolDO">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="toolCode" column="tool_code" jdbcType="VARCHAR"/>
+        <result property="toolName" column="tool_name" jdbcType="VARCHAR"/>
+        <result property="calculateType" column="calculate_type" jdbcType="VARCHAR"/>
+        <result property="selectedPriority" column="selected_priority" jdbcType="INTEGER"/>
+        <result property="calculateCode" column="calculate_code" jdbcType="VARCHAR"/>
+        <result property="selectedCode" column="selected_code" jdbcType="VARCHAR"/>
+        <result property="benefitMapping" column="benefit_mapping" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="VARCHAR"/>
+        <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--基本字段-->
+    <sql id="base_Column_List">
+        id,tool_code,tool_name,calculate_type,selected_priority,calculate_code,selected_code,benefit_mapping,status,gmt_create,gmt_modified,ext_info
+    </sql>
+
+    <!--查询此表的所有数据-->
+    <select id="listPromotionToolDO" resultMap="promotionToolDO">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_tool
+    </select>
+
+    <!--根据传入的toolCode获取优惠工具表信息-->
+    <select id="queryPromotionToolDOByToolCode" resultMap="promotionToolDO" parameterType="list">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_tool
+        WHERE tool_code IN
+        <foreach collection="list" item="toolCode" open="(" close=")" separator=",">
+            #{toolCode}
+        </foreach>
+    </select>
+</mapper>

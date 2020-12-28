@@ -25,14 +25,14 @@ public class MyServerConfig {
      * 如 修改端口号 等等的配置信息
      * @return
      */
-    @Bean
-    public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> myWebServerFactoryCustomizer() {
-
-        return new WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>() {
-            @Override
-            public void customize(ConfigurableServletWebServerFactory factory) {
-                factory.setPort(8085);
-            }
-        };
-    }
+    //@Bean
+    //public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> myWebServerFactoryCustomizer() {
+    //
+    //    return new WebServerFactoryCustomizer<ConfigurableServletWebServerFactory>() {
+    //        @Override
+    //        public void customize(ConfigurableServletWebServerFactory factory) {
+    //            factory.setPort(8085);
+    //        }
+    //    };
+    //}
 }

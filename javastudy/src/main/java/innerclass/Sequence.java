@@ -10,7 +10,7 @@ import java.util.List;
 public class Sequence {
 	private Object[] items;
 	private int next = 0;
-	private List<String> a = new ArrayList<>();
+	private List<String> a = new ArrayList();
 
 	public Sequence(int size) {
 		items = new Object[size];

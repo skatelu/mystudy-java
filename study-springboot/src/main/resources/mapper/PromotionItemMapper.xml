@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="testhttp.demo.sqlitetest.mapper.PromotionItemMapper">
+    <resultMap id="promotionItemDO"
+               type="testhttp.demo.sqlitetest.model.PromotionItemDO">
+        <id property="id" column="id" jdbcType="INTEGER"/>
+        <result property="promotionId" column="promotion_id" jdbcType="VARCHAR"/>
+        <result property="promotionStatus" column="promotion_status" jdbcType="VARCHAR"/>
+        <result property="brandId" column="brand_id" jdbcType="VARCHAR"/>
+        <result property="itemId" column="item_id" jdbcType="VARCHAR"/>
+        <result property="itemType" column="item_type" jdbcType="VARCHAR"/>
+        <result property="promotionExpression" column="promotion_expression" jdbcType="VARCHAR"/>
+        <result property="gmtCreate" column="gmt_create" jdbcType="VARCHAR"/>
+        <result property="gmtModified" column="gmt_modified" jdbcType="VARCHAR"/>
+        <result property="extInfo" column="ext_info" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--基本字段-->
+    <sql id="base_Column_List">
+        id,promotion_id,promotion_status,brand_id,item_id,item_type,promotion_expression,gmt_create,gmt_modified,ext_info
+    </sql>
+
+    <!--查询此表的所有数据-->
+    <select id="listPromotionItemDO" resultMap="promotionItemDO">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_item
+    </select>
+
+    <!--根据传入的promotionId查询表信息-->
+    <select id="queryPromotionItemDO" resultMap="promotionItemDO" parameterType="map">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_item
+        WHERE
+        item_type = #{itemType}
+        AND item_id IN
+        <foreach collection="itemIds" item="itemId" open="(" close=")" separator=",">
+            #{itemId}
+        </foreach>
+    </select>
+
+    <!--根据传入的promotionId获取-->
+    <select id="queryPromotionItemDOByPromotionId" resultMap="promotionItemDO" parameterType="list">
+        SELECT
+        <include refid="base_Column_List"/>
+        FROM crm_promotion_item
+        WHERE promotion_id IN
+        <foreach collection="list" item="promotionId" open="(" close=")" separator=",">
+            #{promotionId}
+        </foreach>
+    </select>
+</mapper>
