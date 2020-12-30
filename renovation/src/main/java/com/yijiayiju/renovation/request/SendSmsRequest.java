@@ -13,7 +13,7 @@ import java.util.Date;
 public class SendSmsRequest {
     private String name;
 
-    private String phone;
+    private String tel;
 
     private Date date;
 
@@ -25,12 +25,12 @@ public class SendSmsRequest {
         this.name = name;
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTel() {
+        return tel;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     public Date getDate() {

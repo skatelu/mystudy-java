@@ -6,6 +6,7 @@ package com.yijiayiju.renovation.service.impl;
 
 import java.lang.reflect.Type;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.google.gson.JsonSyntaxException;
@@ -29,6 +30,12 @@ import com.yijiayiju.renovation.service.SendSmsService;
 @Service
 public class SendSmsServiceImpl implements SendSmsService {
 
+    @Value("${tengxunyun.secretId}")
+    private String secretId;
+
+    @Value("${tengxunyun.SecretKey}")
+    private String secretKey;
+
     /**
      * 发送短信接口
      * @param request:
@@ -39,13 +46,13 @@ public class SendSmsServiceImpl implements SendSmsService {
      * @since v0.1
      */
     @Override
-    public SendSmsResponse sendSms(SendSmsRequest request) throws TencentCloudSDKException {
+    public String sendSms(SendSmsRequest request){
 
-        SendSmsResponse sendSmsResponse = this.sendSmsClient();
+        //SendSmsResponse sendSmsResponse = this.sendSmsClient();
 
        // TODO 逻辑判断，是否正常发送短信
 
-        return sendSmsResponse;
+        return "发送短信成功！";
     }
 
 
@@ -56,10 +63,11 @@ public class SendSmsServiceImpl implements SendSmsService {
          * 你也可以直接在代码中写死密钥对，但是小心不要将代码复制、上传或者分享给他人，
          * 以免泄露密钥对危及你的财产安全。
          * CAM密匙查询: https://console.cloud.tencent.com/cam/capi*/
-        Credential cred = new Credential("secretId", "secretKey");
+        Credential cred = new Credential(secretId, secretKey);
 
         // 实例化一个http选项，可选，没有特殊需求可以跳过
         HttpProfile httpProfile = new HttpProfile();
+
         // 设置代理
         httpProfile.setProxyHost("host");
         httpProfile.setProxyPort(80000);

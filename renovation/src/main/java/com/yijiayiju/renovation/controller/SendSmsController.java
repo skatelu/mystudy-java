@@ -8,6 +8,8 @@ import sun.nio.cs.ext.ExtendedCharsets;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,21 +22,16 @@ import com.yijiayiju.renovation.service.SendSmsService;
  * @version $Id: SendSmsController.java, v 0.1 2020-12-29 11:28 yjl Exp $$
  */
 @RestController
-@RequestMapping("/sendMsg")
+@RequestMapping("/api/sendMsg")
 public class SendSmsController {
 
     @Autowired
     private SendSmsService sendMsgService;
 
-    public String sendSms(HttpRequest request, SendSmsRequest smsRequest) {
-        SendSmsResponse sendSmsResponse = null;
-        try {
-            sendSmsResponse = sendMsgService.sendSms(smsRequest);
-        } catch (Exception e) {
-            System.out.println("发生异常");
-        }
-
-        return "短信发送成功！";
+    @RequestMapping("/sendSms")
+    public String sendSms(@RequestBody SendSmsRequest smsRequest) {
+        System.out.println("收到请求==================");
+        return sendMsgService.sendSms(smsRequest);
     }
 
 }
