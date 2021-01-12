@@ -14,7 +14,7 @@ public class Car {
 		System.out.println("我是父类的Car");
 	}
 
-	public void run(){
+	public void run1(){
 		System.out.println("我能跑");
 	}
 

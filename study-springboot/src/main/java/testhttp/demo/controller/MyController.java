@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import testhttp.demo.config.MyConfigBean;
 import testhttp.demo.exception.UserNotExistException;
 
+import java.util.concurrent.Callable;
+
 @RestController
 @RequestMapping(value = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MyController {
@@ -39,6 +41,14 @@ public class MyController {
         if (user.equals("aaa")) {
             throw new UserNotExistException();
         }
+
+        Callable<String> taskWork = () -> {
+            Thread thread = Thread.currentThread();
+            Thread.sleep(3000);
+            System.out.println(thread.getName());
+            return "执行完成";
+        };
+
         return "Hello world";
     }
 }
