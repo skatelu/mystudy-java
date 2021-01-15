@@ -1,8 +1,6 @@
 package juc.bq;
 
-import java.awt.*;
 import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Test {
