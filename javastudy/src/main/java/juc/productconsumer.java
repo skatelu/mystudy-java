@@ -58,17 +58,19 @@ public class productconsumer {
  * 判断等待，业务，通知
  */
 class Data{
-    private int number = 0;
+    private static Boolean flag = false;
+    public static int number = 0;
 
     /**
      * +1
      */
     public synchronized void increment() throws InterruptedException {
-        while (number != 0) {
+        while (flag) {
             // 等待
             this.wait();
         }
         number++;
+        flag = true;
         // 通知其他线程，我 +1 完毕了
         System.out.println(Thread.currentThread().getName()+"=>"+number);
         this.notifyAll();
@@ -78,11 +80,12 @@ class Data{
      * -1
      */
     public synchronized void dscrement() throws InterruptedException {
-        while (number == 0){
+        while (!flag){
             // 等待
             this.wait();
         }
         number--;
+        flag = false;
         // 通知其他线程，我-1完毕了
         System.out.println(Thread.currentThread().getName()+"=>"+number);
         this.notifyAll();
