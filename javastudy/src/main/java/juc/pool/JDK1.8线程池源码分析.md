@@ -1,4 +1,5 @@
 # JDK1.8 线程池源码分析
+* 引自：https://blog.csdn.net/Epoch_Elysian/article/details/107282186
 ## 线程池的状态
 * 线程池内部使用 AtomicInteger 类型的ctl属性来进行状态控制。其中次高三位分别表示running、shutdown、stop、teminated这5中状态
 ![](./JAVA线程池状态.png)
@@ -127,7 +128,7 @@
 
 * ![](D:\mystudywork\mystudy-java\javastudy\src\main\java\juc\pool\FutureTask类图.png)
 
-* 我们看到FutureTask实现了**RunnableFuture**，而 RunnableFuture 继承了Tunnable和Future，再来看看FutureTask类中的重要属性和构造方法
+* 我们看到FutureTask实现了**RunnableFuture**，而 RunnableFuture 继承了Runnable和Future，再来看看FutureTask类中的重要属性和构造方法
 
 * ```java
   

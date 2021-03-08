@@ -16,7 +16,11 @@ public class Demo01 {
 //        threeMethod();
 
         // 7大参数
-        test2();
+        //test2();
+
+
+        String a = "test";
+        a.hashCode();
     }
 
     public static void threeMethod(){
