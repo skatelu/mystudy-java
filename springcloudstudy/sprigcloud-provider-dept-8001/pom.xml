@@ -13,7 +13,7 @@
 
     <dependencies>
 
-        <!--注册Eureka-->
+        <!--注册Eureka  客户端-->
         <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-eureka -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

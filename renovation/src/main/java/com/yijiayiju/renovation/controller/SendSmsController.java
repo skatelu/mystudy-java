@@ -4,6 +4,7 @@
  */
 package com.yijiayiju.renovation.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import sun.nio.cs.ext.ExtendedCharsets;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +35,9 @@ public class SendSmsController {
         return sendMsgService.sendSms(smsRequest);
     }
 
+    @GetMapping("/test")
+    public String getTest(){
+        System.out.println("测试本地代码。。。。。");
+        return "测试成功！";
+    }
 }
