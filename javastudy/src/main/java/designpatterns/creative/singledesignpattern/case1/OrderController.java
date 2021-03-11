@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package designpatterns.singledesignpattern.case1;
+package designpatterns.creative.singledesignpattern.case1;
 
 import java.io.IOException;
 

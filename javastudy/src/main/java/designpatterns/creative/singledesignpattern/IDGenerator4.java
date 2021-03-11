@@ -2,9 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package designpatterns.singledesignpattern;
-
-import java.util.concurrent.atomic.AtomicLong;
+package designpatterns.creative.singledesignpattern;
 
 /**
  * 进程间唯一单例，即集群间的唯一单例

@@ -2,9 +2,8 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2021 All Rights Reserved.
  */
-package designpatterns.singledesignpattern.case2;
+package designpatterns.creative.singledesignpattern.case2;
 
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**

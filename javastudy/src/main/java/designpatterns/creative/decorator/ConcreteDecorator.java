@@ -2,7 +2,7 @@
  * Alipay.com Inc.
  * Copyright (c) 2004-2020 All Rights Reserved.
  */
-package designpatterns.decorator;
+package designpatterns.creative.decorator;
 
 /**
  * @author yjl
